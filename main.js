@@ -3,7 +3,6 @@ const askBtn = document.querySelector("#askbtn");
 const container = document.querySelector(".container");
 const themeBtn = document.querySelector("#themebtn");
 const deleteChatHistoryBtn = document.querySelector("#deletechathistorybtn");
-import config from './config.js';
 
 let userText = null;
 const API_KEY = config.API_KEY;
