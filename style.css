@@ -1,0 +1,280 @@
+/* Import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --text-color: white;
+    --icon-color: rgb(168, 168, 168);
+    --icon-hover-bg: rgb(96, 96, 96);
+    --placeholder-color: lightgray;
+    --outgoing-chat-bg: #30313b;
+    --incoming-chat-bg: #3b3c48;
+    --outgoing-chat-border: #30313b;
+    --incoming-chat-border: #3b3c48;
+}
+
+.light-mode {
+    --text-color: black;
+    --icon-color: gray;
+    --icon-hover-bg: lightgray;
+    --placeholder-color: rgb(96, 96, 96);
+    --outgoing-chat-bg: white;
+    --incoming-chat-bg: #d1d2eb3b;
+    --outgoing-chat-border: white;
+    --incoming-chat-border: #d1d2eb3b;
+}
+
+body {
+    background: var(--outgoing-chat-bg);
+}
+
+.container {
+    max-height: 100vh;
+    padding-bottom: 150px;
+    overflow-y: auto;
+}
+
+:where(.container, textarea)::-webkit-scrollbar {
+    width: 5px;
+}
+
+:where(.container, textarea)::-webkit-scrollbar-track {
+    background: var(--incoming-chat-bg);
+    border-radius: 25px;
+}
+
+:where(.container, textarea)::-webkit-scrollbar-thumb {
+    background: var(--icon-color);
+    border-radius: 25px;
+}
+
+.container .chat {
+    padding: 25px 10px;
+    display: flex;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.container .outgoing {
+    background: var(--outgoing-chat-bg);
+    border: 1px solid var(--outgoing-chat-border);
+}
+
+.container .incoming {
+    background: var(--incoming-chat-bg);
+    border: 1px solid var(--incoming-chat-border);
+}
+
+.chat .content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat .content span {
+    font-size: 1.3rem;
+    color: var(--icon-color);
+    visibility: hidden;
+}
+
+/* Visible copybtn when hover but not when it contains typing view element  */
+.chat:hover .content:not(:has(.typing, .oops)) span {
+    visibility: visible;
+}
+
+.chat .details {
+    display: flex;
+    align-items: center;
+}
+
+.outgoing .details img {
+    align-self: flex-start;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: white;
+}
+
+.incoming .details img {
+    align-self: flex-start;
+    width: 35px;
+    height: 35px;
+    padding: 2px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: white;
+}
+
+.material-symbols-rounded {
+    user-select: none;
+    cursor: pointer;
+}
+
+.chat .details p {
+    white-space: pre-wrap;
+    font-size: 1.05rem;
+    padding: 0 50px 0 25px;
+}
+
+.chat .details p.oops {
+    color: rgb(255, 200, 0);
+}
+
+.typing {
+    display: inline-flex;
+    padding-left: 25px;
+}
+
+.typing .dot {
+    height: 7px;
+    width: 7px;
+    opacity: 0.7;
+    margin: 0 3px;
+    border-radius: 50%;
+    background: var(--text-color);
+    animation: animateDots 1.5s var(--delay) ease-in-out infinite;
+}
+
+@keyframes animateDots {
+
+    0%,
+    44% {
+        transform: translateY(0px);
+    }
+
+    22% {
+        opacity: 0.4;
+        transform: translateY(-6px);
+    }
+
+    44% {
+        opacity: 0.2;
+    }
+}
+
+.textcontainer {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    padding: 20px 10px;
+    bottom: 0;
+    width: 100%;
+    background: var(--outgoing-chat-bg);
+    border: 1px solid var(--outgoing-chat-border);
+}
+
+.textcontainer .textcontent {
+    max-width: 1075px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.textcontainer .textcontent .textinputarea {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.textcontainer .textcontent .textinputarea span {
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    transition: 0.2s;
+    visibility: hidden;
+}
+
+.textcontainer .textcontent .textinputarea textarea:valid~span {
+    visibility: visible;
+}
+
+.textcontainer .textcontent .textinputarea span:hover {
+    transform: scale(1.2);
+}
+
+.textcontainer .textcontent .textinputarea textarea {
+    width: 100%;
+    height: 55px;
+    font-size: 1rem;
+    padding: 15px 45px 15px 20px;
+    border-radius: 3px;
+    border: none;
+    outline: 1px solid var(--incoming-chat-border);
+    resize: none;
+    background: var(--incoming-chat-bg);
+    color: var(--text-color);
+}
+
+.textcontainer .textcontent .textinputarea::placeholder {
+    color: var(--placeholder-color);
+}
+
+.textcontainer .textcontent span {
+    height: 50px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--icon-color);
+}
+
+.textcontainer .textcontrols {
+    display: flex;
+}
+
+.textcontainer .textcontrols span {
+    height: 50px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid var(--incoming-chat-border);
+    color: var(--icon-color);
+}
+
+.textcontainer .textcontrols span:hover {
+    background: var(--incoming-chat-bg);
+}
+
+.defaultview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16% 28%;
+    color: rgb(214, 212, 212);
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .textcontainer .textcontent {
+        max-width: 200px;
+        width: 100%;
+    }
+
+    .textcontainer .textcontent .textinputarea textarea {
+        width: 100%;
+        height: 50px;
+        font-size: 0.8rem;
+        padding: 15px 45px 15px 20px;
+    }
+
+    .defaultview {
+        margin: 0;
+        visibility: hidden;
+    }
+}
