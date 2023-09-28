@@ -5,7 +5,7 @@ const themeBtn = document.querySelector("#themebtn");
 const deleteChatHistoryBtn = document.querySelector("#deletechathistorybtn");
 
 let userText = null;
-const API_KEY = config.API_KEY;
+const API_KEY = `ChatGpt_API_KEY`;
 
 themeBtn.addEventListener("click", () => {
     // Toggle class of body
