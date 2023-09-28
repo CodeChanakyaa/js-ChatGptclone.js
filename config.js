@@ -1,3 +1,3 @@
 var config = {
-    API_KEY: `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`
+    API_KEY: `ChatGpt_API_KEY`
 }
